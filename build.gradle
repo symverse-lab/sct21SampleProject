@@ -1,0 +1,116 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.springcloud'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+bootRun {
+    systemProperties = System.properties
+}
+
+
+ext {
+    springCloudVersion = 'Greenwich.M3'
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    // lombok getter setter
+    compile('org.projectlombok:lombok:1.16.18')
+    
+    
+      // This dependency is exported to consumers, that is to say found on their compile classpath.
+    // api 'org.apache.commons:commons-math3:3.6.1'
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'com.google.guava:guava:23.0'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+    compile('org.springframework.boot:spring-boot-starter-web')
+	
+	//test starter
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	//gradle symweb3j classpath
+	eclipse.classpath {
+    	containers 'org.eclipse.jdt.USER_LIBRARY/SymWeb3j'
+	}
+    //web3j
+	compile fileTree(include: ['*.jar'], dir: 'libs/SymWeb3j')
+	
+	//web3j 관련  -- keyStoreManagement.java에 필요한 파일
+	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.54'
+	
+	// gson
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+	
+	//lombok geter seter plugin
+	compile('org.mariadb.jdbc:mariadb-java-client:2.2.5')
+	
+	//json rpc 관련
+	compile ('io.reactivex.rxjava2:rxjava:2.2.2')
+	// https://mvnrepository.com/artifact/org.json/json
+	compile group: 'org.json', name: 'json', version: '20180813'
+	// https://mvnrepository.com/artifact/net.minidev/json-smart
+	compile group: 'net.minidev', name: 'json-smart', version: '1.0.9' 
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+	
+	//java.lang.ClassNotFoundException: okhttp3.Interceptor 발생
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+	compile 'com.squareup.okhttp3:okhttp:4.2.2'
+	
+	// 암호화 관련 모듈
+	compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '2.1.1'
+	
+	//spring boot batch
+ 	compile("org.springframework.boot:spring-boot-starter-batch")
+    compile("org.hsqldb:hsqldb")
+    
+    //view template
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	
+	//jackson 
+	compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.1.0'
+	
+	// prometheus lib 완벽한 커스터마이징이 필요할때 사용
+    //compile group: 'io.prometheus', name: 'simpleclient', version: '0.5.0'
+    //compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.5.0'
+    //compile group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.5.0'
+    
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-core
+	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.2.0'
+	// https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+	compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.1'
+
+    
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

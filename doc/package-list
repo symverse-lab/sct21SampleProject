@@ -1,0 +1,15 @@
+com.symverse
+com.symverse.common.model
+com.symverse.controller
+com.symverse.core.config
+com.symverse.core.config.exception
+com.symverse.core.config.jasypt
+com.symverse.core.config.systemenv
+com.symverse.exception
+com.symverse.interceptor
+com.symverse.sct21.common.util
+com.symverse.sct21.exception
+com.symverse.sct21.gsym.core
+com.symverse.sct21.gsym.domain
+com.symverse.sct21.transaction.domain
+com.symverse.sct21.transaction.service

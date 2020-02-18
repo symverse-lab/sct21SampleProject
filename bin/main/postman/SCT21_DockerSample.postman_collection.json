@@ -1,0 +1,1302 @@
+{
+	"info": {
+		"_postman_id": "6c749c39-a257-4efe-a7e2-d52c2ca40710",
+		"name": "SCT21_DockerSample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "000_symverse_util",
+			"item": [
+				{
+					"name": "0001 패스워드 암호화 - 추후 적용유무 결정 - TODO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "abc"
+						},
+						"url": {
+							"raw": "{{url}}/sct21/passswordEnc?password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"passswordEnc"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0002 패스워드 복호화 - 추후 적용유무 결정- TODO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"path\" : \"symverse321#@!_testnet\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/sct21/passswordDec?password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"passswordDec"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0003 sym coin 잔액 확인",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/getBalance?symId=0x00021000000000020002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"getBalance"
+							],
+							"query": [
+								{
+									"key": "symId",
+									"value": "0x00021000000000020002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0004 sym coin 전송",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "abc"
+						},
+						"url": {
+							"raw": "{{url}}/sct21/sendRawTransaction?toSymIdAddress=00021000000000030002&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"sendRawTransaction"
+							],
+							"query": [
+								{
+									"key": "toSymIdAddress",
+									"value": "00021000000000030002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "001_sct21_method",
+			"item": [
+				{
+					"name": "0001 - Method0 - SCT21_CREATE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_CREATE?name=TESTCOIN&symBol=TST&totalSupply=2000&totalLockSupply=100&ownerSymId=00021000000000020002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_CREATE"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "TESTCOIN",
+									"description": "코인이름"
+								},
+								{
+									"key": "symBol",
+									"value": "TST",
+									"description": "코인약어 - 무조건 3자 ( 영문 )"
+								},
+								{
+									"key": "totalSupply",
+									"value": "2000",
+									"description": "총 코인량"
+								},
+								{
+									"key": "totalLockSupply",
+									"value": "100",
+									"description": "총 락 코인양"
+								},
+								{
+									"key": "ownerSymId",
+									"value": "00021000000000020002",
+									"description": "SCT21의 OWNER 설정"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0002 - Method1 - SCT21_TRANSFER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_TRANSFER?contractAddress=0x367288627cc9c45f70fe&recipientSymId=0x00021000000000040002&amount=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_TRANSFER"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "recipientSymId",
+									"value": "0x00021000000000040002"
+								},
+								{
+									"key": "amount",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0003 - Method2 - SCT21_TRANSFER_FROM",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_TRANSFER_FROM?contractAddress=0x367288627cc9c45f70fe&recipientSymId=0x00021000000000050002&amount=1&keyStoreFileName=00021000000000030002.json",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_TRANSFER_FROM"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "recipientSymId",
+									"value": "0x00021000000000050002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								},
+								{
+									"key": "keyStoreFileName",
+									"value": "00021000000000030002.json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0004 - Method3 - SCT21_APPROVE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_APPROVE?contractAddress=0x9625a8d194babe2cd7c0&spenderSymId=0x00021000000000030002&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_APPROVE"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x9625a8d194babe2cd7c0"
+								},
+								{
+									"key": "spenderSymId",
+									"value": "0x00021000000000030002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0005 - Method4 - SCT21_DECREASE_APPROVE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_DECREASE_APPROVE?contractAddress=0x367288627cc9c45f70fe&spenderSymId=00021000000000030002&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_DECREASE_APPROVE"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "spenderSymId",
+									"value": "00021000000000030002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0006 - Method5 - SCT21_MINT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_MINT?contractAddress=0x367288627cc9c45f70fe&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_MINT"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0007 - Method6 - SCT21_BURN",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_BURN?contractAddress=0x367288627cc9c45f70fe&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_BURN"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0008 - Method7 - SCT21_PAUSE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_PAUSE?contractAddress=0x367288627cc9c45f70fe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_PAUSE"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0009 - Method8 - SCT21_UNPAUSE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_UNPAUSE?contractAddress=0x367288627cc9c45f70fe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_UNPAUSE"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0010 - Method9 - SCT21_TRANSFER_OWNER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_TRANSFER_OWNER?contractAddress=0x367288627cc9c45f70fe&newOwnerSymId=0x00021000000000020002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_TRANSFER_OWNER"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "newOwnerSymId",
+									"value": "0x00021000000000020002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0011 - Method10 - SCT21_LOCK_TRANSFER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_LOCK_TRANSFER?contractAddress=0x367288627cc9c45f70fe&recipientSymId=0x00021000000000030002&amount=3&lockAmount=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_LOCK_TRANSFER"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "recipientSymId",
+									"value": "0x00021000000000030002"
+								},
+								{
+									"key": "amount",
+									"value": "3"
+								},
+								{
+									"key": "lockAmount",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0012 - Method11 - SCT21_UNLOCK_AMOUNT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_UNLOCK_AMOUNT?contractAddress=0x367288627cc9c45f70fe&recipientSymId=0x00021000000000040002&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_UNLOCK_AMOUNT"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "recipientSymId",
+									"value": "0x00021000000000040002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0013 - Method12 - SCT21_RESTORE_LOCK_AMOUNT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_RESTORE_LOCK_AMOUNT?contractAddress=0x367288627cc9c45f70fe&recipientSymId=00021000000000030002&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_RESTORE_LOCK_AMOUNT"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "recipientSymId",
+									"value": "00021000000000030002"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0014 - Method13 - SCT21_ADD_LOCK_AMOUNT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_ADD_LOCK_AMOUNT?contractAddress=0x367288627cc9c45f70fe&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_ADD_LOCK_AMOUNT"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0015 - Method14 - SCT21_SUB_LOCK_AMOUNT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_SUB_LOCK_AMOUNT?contractAddress=0x367288627cc9c45f70fe&amount=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_SUB_LOCK_AMOUNT"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "amount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0016 - Method15 - SCT21_ACCOUNT_LOCK",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_ACCOUNT_LOCK?contractAddress=0x367288627cc9c45f70fe&symId=0x00021000000000040002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_ACCOUNT_LOCK"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "symId",
+									"value": "0x00021000000000040002"
+								},
+								{
+									"key": "amountValue",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0017 - Method16 - SCT21_ACCOUNT_UNLOCK",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sct21/SCT21_ACCOUNT_UNLOCK?contractAddress=0x367288627cc9c45f70fe&symId=0x00021000000000040002",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sct21",
+								"SCT21_ACCOUNT_UNLOCK"
+							],
+							"query": [
+								{
+									"key": "contractAddress",
+									"value": "0x367288627cc9c45f70fe"
+								},
+								{
+									"key": "symId",
+									"value": "0x00021000000000040002"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "098_Citizen 조회",
+			"item": [
+				{
+					"name": "0001 시티즌아이디 목록 citizen_getCitizensByBlockNumber",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"citizen_getCitizensByBlockNumber\",\n   \"params\":[\"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0001 시티즌아이디 목록 citizen_getCitizensBySymId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"citizen_getCitizenBySymID\",\n   \"params\":[\"0x00021000000000270002\",\"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "099 Gsym Engine API",
+			"item": [
+				{
+					"name": "0001 쿠폰 트랜잭션 sym_getTransactionReceipt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 2,\n    \"method\": \"sym_getTransactionReceipt\",\n    \"params\": [\n        \"0xee9ea3d5c9c17358fd24d128da46bef29bf0e55e712afe67c80a118f0fe99190\"\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0010 트랜잭션 조회 sym_getTransactionByHash",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sym_getTransactionReceipt\",\n   \"params\":[\"0xbd4d66435289ef8566b9d7ea41afaf9cb52e9e3f546540b2e7e0d6b43fc42c06\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0007 쿠폰 트랜잭션 sendRowTransaction Samle Data Form",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sym_sendRawTransaction\",\n    \"params\": [\n        \"0xf8808a0002100000000018000280850430e23400830f4240808097d60280d382313083545454108a0002100000000018000201cb8a0002100000000018000201a0a7a830e06d86b6a95223a6c9b07554d863411f09b09c027898b4efc708e4f6f9a07aeb67ccdcbbac2d5b280309e8369bbee458f02087e79487f38e58755d496dfb\"\n    ],\n    \"id\": 0\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0002 쿠폰 트랜잭션 sym_getTransactionCount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2, \n   \"method\": \"sym_getTransactionCount\",\n   \"params\":[\"0xbfdf00006f735701623b\", \"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0003 쿠폰 트랜잭션 sct_getContract",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sct_getContract\",\n   \"params\":[\"0xc45279812768ed8b3aa2\", \"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0005 쿠폰 트랜잭션 sym_getContractItem ( [contractAccount, index] )",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2, \n   \"method\": \"sct_getContractItem\",\n   \"params\":[\"0xc45279812768ed8b3aa2\", 1,\"latest\"]  \n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0100 sym api  sym_getBalance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sct_getContract\",\n   \"params\":[\"0xc45279812768ed8b3aa2\", \"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0006 쿠폰 트랜잭션 sym_getContractAccount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sct_getContractAccount\",\n   \"params\":[\"0xc6c271861ed34595031f\",\"0x00022000000000250002\",\"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{wise_gsymEngineCoupon}}",
+							"host": [
+								"{{wise_gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0005 쿠폰 트랜잭션 sct_getContractItemsByCategory [ contractAccount, symid , lastest ]",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2, \n   \"method\": \"sct_getContractItemsByCategory\",\n   \"params\": [\"0xc45279812768ed8b3aa2\",2, \"latest\"] \n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9998 Main블록 체크",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"jsonrpc\":\"2.0\",\n \"method\":\"sym_blockNumber\",\n \"params\":[\"latest\", true],\n \"id\":1\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9999 쿠폰 트랜잭션 eth_pendingTransactions ( 처리되지 않은 펜딩값 알아내기)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sym_pendingTransactions\",\n   \"params\":[\"0x7061fbf5f442ee8a5edd710973d0445dd16f2610a225988a4a2668001d02b8e7\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0007 쿠폰 트랜잭션 sct_getAllowance 스펜더 balance조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"jsonrpc\": \"2.0\",\n   \"id\": 2,\n   \"method\": \"sct_getAllowance\",\n   \"params\":[\"0xc6c271861ed34595031f\", \"0x00000000000000000001\", \"0x00000000000000000002\", \"latest\"]\n}"
+						},
+						"url": {
+							"raw": "{{gsymEngineCoupon}}",
+							"host": [
+								"{{gsymEngineCoupon}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

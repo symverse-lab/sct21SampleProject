@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/symverse/common/model/CommUtil.java=UTF-8
+encoding//src/main/java/com/symverse/sct21/transaction/service/Sct21Factory.java=UTF-8
+encoding//src/main/java/com/symverse/sct21/transaction/service/Sct21RawTransactionEncoderEngineVersion1_0_14.java=UTF-8
+encoding//src/main/java/com/symverse/sct21/transaction/service/Sct21SendRawTransactionService.java=UTF-8
+encoding/<project>=UTF-8
