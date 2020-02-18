@@ -1,0 +1,32 @@
+#sct21 docker + nginx
+version: '3'
+services:
+  util_symverse_sct_app:
+      container_name: util_symverse_sct_app
+      image: "symverse/symverse_sct21_sample"
+      ports:
+       - "8888:8888"
+      networks:
+      - backend
+  nginx:
+      container_name: nginx
+      image: "symverse/util_symverse_nginx_sct_app"
+      volumes:
+       - ./data/certbot/conf:/etc/letsencrypt
+       - ./data/certbot/www:/var/www/certbot
+      ports:
+       - "80:80"
+      networks:
+       - backend
+  certbot:
+      container_name: symverse_certbot
+      image: certbot/certbot
+      restart: unless-stopped
+      volumes:
+       - ./data/certbot/conf:/etc/letsencrypt
+       - ./data/certbot/www:/var/www/certbot
+      entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"       
+ 
+networks: # 가장 기본적인 bridge 네트워크
+  backend:
+    driver: bridge
