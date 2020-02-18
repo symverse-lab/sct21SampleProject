@@ -1,6 +1,6 @@
 < Sct21 docker 컨테이너 셋팅방법 >
 
-1. docker images 받기 ( 둘중 선택 ) 뒤에 tag는 engine버전이다. -> docker push 
+1. docker images 받기 
 
    : 특정버전 받는방법
 
@@ -18,7 +18,24 @@
 
      
 
-3. 지갑 키스토에서 서버 키스토어로 변경하는 작업 
+   - 특정 파라미터를 변경하고 싶을때 다음과 같이 실행하면된다.
+
+     자신이 필요한 파라미터만 수정해서 실행하면 된다.
+
+     
+
+     sudo docker run --memory=2g \
+     -e CHAIN_ID=1 \
+     -e NODE_URL=http://112.172.172.60:8002 \
+     -e KEYSTORE_PASSWORD=1234 \
+     -e KEYSTORE_FILENAME=keystore.json \
+     -e WORK_NODE=00021000000000020002 \
+     -e SERVICE_MODE=docker \
+     -d -p ${my want port}:8888 --name sct21_sample_springboot symverse/symverse_sct21_sample
+
+     
+
+3. 지갑 키스토에서 서버 키스토어로 변경하는 작업이 필요할때는 도커를 실행시키고 나서 아래주소로 접속!
 
    - http://${my ip}:{my want port}/keystore/convert 접속!!
 
